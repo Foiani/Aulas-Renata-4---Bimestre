@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Matrícula</title>
+    <style>
+        /* Reset básico e fundo da página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center; /* Centraliza o formulário na tela */
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container do Formulário */
+        .container-formulario {
+            background-color: white;
+            width: 100%;
+            max-width: 600px; /* Largura máxima para não ficar gigante no PC */
+            padding: 30px 40px;
+            border-radius: 10px; /* Bordas arredondadas no card */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .container-formulario h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        /* Organização dos campos */
+        .grupo-campo {
+            margin-bottom: 15px;
+        }
+
+        .grupo-campo label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Estilo dos inputs, selects e textarea */
+        .grupo-campo input[type="text"],
+        .grupo-campo input[type="email"],
+        .grupo-campo input[type="password"],
+        .grupo-campo input[type="date"],
+        .grupo-campo select,
+        .grupo-campo textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px; /* Bordas arredondadas nos campos */
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* Efeito ao focar (Focus) */
+        .grupo-campo input:focus,
+        .grupo-campo select:focus,
+        .grupo-campo textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Layout para agrupar campos lado a lado (Data e Curso) */
+        .linha-dupla {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .linha-dupla .grupo-campo {
+            flex: 1;
+        }
+
+        /* Organização de Radio e Checkbox */
+        .opcoes-flex {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .opcoes-flex label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        /* Botão de Enviar */
+        .btn-enviar {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px; /* Bordas arredondadas no botão */
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        /* Hover nos botões */
+        .btn-enviar:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container-formulario {
+                padding: 20px;
+            }
+            .linha-dupla {
+                flex-direction: column; /* Empilha Data e Curso no celular */
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-formulario">
+        <h2>Formulário de Matrícula</h2>
+        
+        <form action="#" method="POST">
+            <!-- Nome -->
+            <div class="grupo-campo">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            </div>
+
+            <!-- E-mail -->
+            <div class="grupo-campo">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <!-- Senha -->
+            <div class="grupo-campo">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Crie uma senha forte" required>
+            </div>
+
+            <!-- Linha com Data e Curso lado a lado -->
+            <div class="linha-dupla">
+                <div class="grupo-campo">
+                    <label for="data">Data de Nascimento:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="curso">Curso de Interesse:</label>
+                    <select id="curso" name="curso" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="ads">Análise e Desenvolvimento de Sistemas</option>
+                        <option value="eng-soft">Engenharia de Software</option>
+                        <option value="ciencia">Ciência da Computação</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sexo -->
+            <div class="grupo-campo">
+                <label>Sexo:</label>
+                <div class="opcoes-flex">
+                    <label><input type="radio" name="sexo" value="masculino" required> Masculino</label>
+                    <label><input type="radio" name="sexo" value="feminino"> Feminino</label>
+        
+                </div>
+            </div>
+
+            <!-- Interesses -->
+            <div class="grupo-campo">
+                <label>Áreas de Interesse :</label>
+                <div class="opcoes-flex">
+                    <label><input type="checkbox" name="interesses" value="web"> Desenvolvimento Web</label>
+                    <label><input type="checkbox" name="interesses" value="dados"> Ciência de Dados</label>
+                    <label><input type="checkbox" name="interesses" value="games"> Jogos</label>
+                </div>
+            </div>
+
+            <!-- Comentários -->
+            <div class="grupo-campo">
+                <label for="comentarios">Comentários:</label>
+                <textarea id="comentarios" name="comentarios" rows="3" placeholder="Alguma informação adicional?"></textarea>
+            </div>
+
+            <!-- Upload de Foto -->
+            <div class="grupo-campo">
+                <label for="foto">Upload de Foto (Opcional):</label>
+                <input type="file" id="foto" name="foto" accept="image/*">
+            </div>
+
+            <!-- Botão Enviar -->
+            <button type="submit" class="btn-enviar">Enviar Matrícula</button>
+        </form>
+    </div>
+
+</body>
+</html>
