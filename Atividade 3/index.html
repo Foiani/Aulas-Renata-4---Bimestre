@@ -3,43 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela 01 - Aula Renata</title>
+    <title>Boom - Produtos</title>
+    <!-- ALUNOS: Seu Nome Completo e Nome do Colega -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* HEADER com Flexbox e Position */
+        header {
+            background-color: #ff5400;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.ativo {
+            color: #ffd700;
+        }
+
+        /* BANNER com Animação */
+        .banner {
+            background: linear-gradient(135deg, #1e1e1e, #333);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .banner h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            animation: deslizar 1s ease-out;
+        }
+
+        @keyframes deslizar {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* GRID de Produtos */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 26px;
+            color: #1e1e1e;
+        }
+
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* CARDS com Hover e Position */
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .tag-oferta {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-conteudo {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-conteudo h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card-conteudo p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .preco {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff5400;
+            margin-bottom: 15px;
+        }
+
+        .btn-comprar {
+            display: block;
+            text-align: center;
+            background-color: #ff5400;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background-color: #e64a00;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVIDADE (Tablet e Celular) */
+        @media (max-width: 900px) {
+            .grid-produtos { grid-template-columns: repeat(2, 1fr); }
+            header { flex-direction: column; gap: 10px; }
+        }
+
+        @media (max-width: 600px) {
+            .grid-produtos { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <style>
-        table, th, td{
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 9px;
-        }
-    </style>
+    <header>
+        <div class="logo">
+            <h1>BOOM</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="ativo">Produtos</a>
+            <a href="pagina2.html">Carrinho 🛒</a>
+        </nav>
+    </header>
 
-    <table>
-            <caption>Trajetória Acadeêmica e Profissional</caption>
+    <div class="banner">
+        <h2>As melhores peças para o seu PC Gamer!</h2>
+        <p>Monte a máquina dos seus sonhos com os menores preços.</p>
+    </div>
 
-        <tr>
-            <th rowspan="2">Estudante</th>
-            <th colspan="2">Formação</th>
-            <th rowspan="2">Ano de Conclusão</th>
-        </tr>
-        <tr>
-            <th>Graduação</th>
-            <th>Pós Graduação</th>
-        </tr>
-        <tr>
-            <th>Erick Santos</th>
-            <td>Ciência da Computação</td>
-            <td>Inteligencia Artificial</td>
-            <td>2025</td>
-        </tr>
-        <tr>
-            <th>Jorge</th>
-            <td>Engenharia de Software</td>
-            <td>Gestão de Projetos</td>
-            <td>2026</td>
-        </tr>
-    </table>
-    
+    <main>
+        <h2 class="titulo-secao">Destaques da Loja</h2>
+        
+        <div class="grid-produtos">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500&q=80" alt="RTX 5090">
+                <div class="card-conteudo">
+                    <h3>RTX 5090 32GB</h3>
+                    <p>A nova geração de placas de vídeo para 4K e Ray Tracing extremo.</p>
+                    <span class="preco">R$ 18.999,00</span>
+                    <a href="pagina2.html" class="btn-comprar">Adicionar ao Carrinho</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80" alt="Processador">
+                <div class="card-conteudo">
+                    <h3>AMD Ryzen 9 7950X</h3>
+                    <p>16 núcleos e 32 threads para o máximo desempenho em jogos e trabalho.</p>
+                    <span class="preco">R$ 3.499,00</span>
+                    <a href="pagina2.html" class="btn-comprar">Adicionar ao Carrinho</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="tag-oferta">OFERTA</div>
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Placa Mãe">
+                <div class="card-conteudo">
+                    <h3>ASUS ROG Strix X670E</h3>
+                    <p>Suporte a DDR5, PCIe 5.0 e Wi-Fi 6E para a build mais avançada.</p>
+                    <span class="preco">R$ 2.899,00</span>
+                    <a href="pagina2.html" class="btn-comprar">Adicionar ao Carrinho</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?auto=format&fit=crop&w=500&q=80" alt="Memória RAM">
+                <div class="card-conteudo">
+                    <h3>Memória RAM DDR5 32GB</h3>
+                    <p>Velocidade de 6000MHz com iluminação RGB e dissipador de calor.</p>
+                    <span class="preco">R$ 899,00</span>
+                    <a href="pagina2.html" class="btn-comprar">Adicionar ao Carrinho</a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=500&q=80" alt="SSD">
+                <div class="card-conteudo">
+                    <h3>SSD NVMe 2TB Samsung 990 Pro</h3>
+                    <p>Leitura de até 7450 MB/s para carregamentos instantâneos.</p>
+                    <span class="preco">R$ 1.299,00</span>
+                    <a href="pagina2.html" class="btn-comprar">Adicionar ao Carrinho</a>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80" alt="Fonte">
+                <div class="card-conteudo">
+                    <h3>Fonte 1000W Corsair 80 Plus Gold</h3>
+                    <p>Modular, silenciosa e pronta para suportar a nova RTX 5090.</p>
+                    <span class="preco">R$ 999,00</span>
+                    <a href="pagina2.html" class="btn-comprar">Adicionar ao Carrinho</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Boom Hardware. Todos os direitos reservados.</p>
+    </footer>
+
 </body>
 </html>

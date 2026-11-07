@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boom - Meu Carrinho</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* HEADER (Mesmo padrão da página principal) */
+        header {
+            background-color: #ff5400;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h1 { font-size: 28px; letter-spacing: 2px; }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover, nav a.ativo { color: #ffd700; }
+
+        /* CONTAINER DO CARRINHO */
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .lista-carrinho {
+            flex: 2; /* Ocupa mais espaço */
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .lista-carrinho h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* ITEM DO CARRINHO usando Flexbox */
+        .item-carrinho {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .item-carrinho img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .item-info {
+            flex: 1; /* Faz o texto ocupar o meio todo */
+        }
+
+        .item-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .item-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .item-preco {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff5400;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        /* RESUMO DO PEDIDO */
+        .resumo-pedido {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 100px;
+        }
+
+        .resumo-pedido h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .linha-resumo {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+
+        .btn-finalizar {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #27ae60; /* Verde para finalizar */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-finalizar:hover {
+            background-color: #219150;
+            transform: scale(1.02); /* Animação de zoom */
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 800px) {
+            main {
+                flex-direction: column; /* Joga o resumo para baixo no celular/tablet */
+            }
+            .resumo-pedido {
+                width: 100%;
+                position: static;
+            }
+            .item-carrinho {
+                flex-direction: column;
+                text-align: center;
+            }
+            .item-preco {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>BOOM</h1>
+        </div>
+        <nav>
+            <a href="index.html">Produtos</a>
+            <a href="pagina2.html" class="ativo">Carrinho 🛒</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Lista de Itens -->
+        <div class="lista-carrinho">
+            <h2>Meu Carrinho</h2>
+
+            <div class="item-carrinho">
+                <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500&q=80" alt="RTX 5090">
+                <div class="item-info">
+                    <h3>Placa de Vídeo RTX 5090 32GB</h3>
+                    <p>Quantidade: 1</p>
+                </div>
+                <div class="item-preco">R$ 18.999,00</div>
+            </div>
+
+            <div class="item-carrinho">
+                <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=500&q=80" alt="Processador">
+                <div class="item-info">
+                    <h3>Processador AMD Ryzen 9 7950X</h3>
+                    <p>Quantidade: 1</p>
+                </div>
+                <div class="item-preco">R$ 3.499,00</div>
+            </div>
+
+            <div class="item-carrinho">
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80" alt="Fonte">
+                <div class="item-info">
+                    <h3>Fonte 1000W Corsair 80 Plus Gold</h3>
+                    <p>Quantidade: 1</p>
+                </div>
+                <div class="item-preco">R$ 999,00</div>
+            </div>
+        </div>
+
+        <!-- Resumo do Pedido -->
+        <div class="resumo-pedido">
+            <h2>Resumo do Pedido</h2>
+            
+            <div class="linha-resumo">
+                <span>Subtotal:</span>
+                <span>R$ 23.497,00</span>
+            </div>
+            <div class="linha-resumo">
+                <span>Frete:</span>
+                <span>Grátis</span>
+            </div>
+            
+            <div class="total">
+                <span>Total:</span>
+                <span>R$ 23.497,00</span>
+            </div>
+
+            <a href="#" class="btn-finalizar">Finalizar Compra</a>
+            <a href="index.html" style="display: block; text-align: center; margin-top: 15px; color: #ff5400; text-decoration: none; font-weight: bold;">Continuar Comprando</a>
+        </div>
+    </main>
+
+</body>
+</html>
